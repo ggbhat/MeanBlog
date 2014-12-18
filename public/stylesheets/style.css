@@ -1,0 +1,23 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color:#fff;
+}
+
+a.title{
+	color:#333;
+}
+
+textarea { width: 100%; border: 1px solid #333; padding: 4px; }
+
+.content-text, .area-title{border:none;height: 100%;resize:none;}
+.content-text:focus, .area-title:focus{
+	border: 1px solid #333;
+}
+
+.content-text:hover{
+
+}

@@ -1,0 +1,18 @@
+
+			<div class="col-md-12 ">
+			<div class="form-group">
+
+			
+				
+			<input type="search" name="" id="input" class="form-control" value="" ng-model="search.title" required="required" title="" placeholder="Search your blog...">
+			</div>
+
+			
+			<div ng-repeat="blog in blogs | filter: search | orderBy: '-created_at' | limitTo: 10"">
+			<h2><a class="title" href="#/{{blog._id}}">{{blog.title}}</a></h2>
+			<div class="content-blog">{{blog.content  | characters:500}}</div>
+			<button type="button" class="btn btn-default">{{blog.created_at | date:'yyyy-MM-dd'}}</button>
+			<button type="button" class="btn btn-info"><a href="#/{{blog._id}}">Readmore</a></button>
+
+			</div>
+			</div>

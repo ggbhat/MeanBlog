@@ -6,10 +6,9 @@ var cookieParser = require('cookie-parser')
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+require('./config/passport')(passport); // pass passport for configuration
 
 
-var routes = require('./routes/index');
 // var users = require('./routes/users');
 var blogs = require('./routes/blogs');
 
@@ -26,7 +25,7 @@ mongoose.connect('mongodb://localhost/blog-app', function(err) {
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '/public/views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
@@ -44,21 +43,19 @@ app.use(session({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/', routes);
+// app.use('/', routes);
 // app.use('/users', users);
 app.use('/blogs', blogs);
+require('./routes/index.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
-// passport config
-var Account = require('./models/account');
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
+// // passport config
+// var Account = require('./models/account');
+// passport.use(new LocalStrategy(Account.authenticate()));
+// passport.serializeUser(Account.serializeUser());
+// passport.deserializeUser(Account.deserializeUser());
 
 
-app.use(function (req, res, next) {
-  res.locals.login = req.isAuthenticated();
-  next();
-});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

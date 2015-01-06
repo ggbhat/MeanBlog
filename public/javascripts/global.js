@@ -86,12 +86,12 @@ angular.module('app', ['ngRoute', 'ngResource','monospaced.elastic','tooltip','t
         .config(['$routeProvider', function ($routeProvider) {
           $routeProvider
             .when('/', {
-              templateUrl: '/blogs.html',
+              templateUrl: '/views/blogs.html',
               controller: 'BlogController'
             })
 
             .when('/:id', {
-              templateUrl: '/blogDetails.html',
+              templateUrl: '/views/blogdetails.html',
               controller: 'BlogDetailCtrl'
            // })
 

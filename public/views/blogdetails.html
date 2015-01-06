@@ -1,0 +1,19 @@
+<div class="container" ng-show="loggedIn">
+			
+			<textarea class="area-title" ng-model="blog.title"></textarea>
+			<textarea  class="content-text msd-elastic" ng-model="blog.content" tooltip title="Click to edit" data-toggle="tooltip" data-position="top" data-delay='{"hide":"100"}'></textarea>
+			<button  class="btn btn-success" ng-click="update()">update</button>
+			<button  class="btn btn-danger" ng-click="remove()">remove</button>
+
+			<a href="/">Cancel</a>
+			
+			</div>
+
+<div class="container" ng-hide="loggedIn">
+			
+			<h3>{{blog.title}}</h3>
+			<div>{{blog.content}}</div>
+			
+			
+			
+			</div>
